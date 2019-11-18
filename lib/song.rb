@@ -19,15 +19,13 @@ class Song
     file_name = fpart[2].partition('-')
     
     
-    self.new(file_name[0].strip)
+    s = self.new(file_name[0].strip)
     
-    check_name = Artist.all.find { |artist| artist.name == file_artist.strip }
+    s.artist = Artist.find_or_create_by(file_artist)
     
-    if check_name.nil?
-      @artist  = Artist.new(file_artist.strip)
-    else
-      @artist  = check_name
-    end
+    return s
+    
+    
     
     #puts "#{file_artist.strip} --- #{file_name[0].strip}"
     
