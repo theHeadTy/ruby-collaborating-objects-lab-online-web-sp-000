@@ -21,7 +21,7 @@ class Song
     
     s = self.new(file_name[0].strip)
     
-    s.artist = Artist.find_or_create_by(file_artist)
+    s.artist = Artist.find_or_create_by_name(file_artist)
     
     return s
     
